@@ -1,0 +1,225 @@
+/*Primary Colors*/
+$Orange: hsl(26, 100%, 55%);
+$Pale-orange: hsl(25, 100%, 94%);
+/*Neutral Colors*/
+$Very-vark-blue: hsl(220, 13%, 13%);
+$Dark-grayish-blue: hsl(219, 9%, 45%);
+$Grayish-blue: hsl(220, 14%, 75%);
+$Light-grayish-blue: hsl(223, 64%, 98%);
+$White: hsl(0, 0%, 100%);
+$Black: hsl(0, 0%, 0%);
+$Black-modal: rgba(0, 0%, 0%, 0.75);
+/*Typography*/
+$font: 'Kumbh Sans', sans-serif;
+
+/*CSS Reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/*Mixins*/
+@mixin responsive($size) {
+    @if $size == mobile {
+        @media (max-width: 375px) { @content; }
+    } @else if $size == desktop {
+        @media (min-width: 1440px) { @content; }
+    }
+}
+
+@mixin modal-background {
+    background-color: $Black-modal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+@mixin image-btn($top, $left) {
+    background-color: $White;
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: $top;
+    left: $left;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+.main-container {
+    width: 375px;
+    border: 1px solid black;
+    margin: auto;
+    position: relative;
+    @include responsive(desktop) {
+        width: 1440px;
+    }
+    .header {
+        //border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        padding: 0 24px;
+        @include responsive(desktop) {
+            height: 112px;
+            border-bottom: 1px solid $Grayish-blue;
+        }
+        &__navigation {
+            width: 175px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include responsive(desktop) {
+                width: 590px;
+            }
+        }
+        &__menu {
+            &:hover {
+                cursor: pointer;
+            }
+            @include responsive(desktop) {
+                display: none;
+            }
+        }
+        &__cart-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 70px;
+            @include responsive(desktop) {
+                width: 125px;
+            }
+        }
+        &__cart {
+            position: relative;
+            &--notification {
+                display: none;
+                background-color: $Orange;
+                width: 15px;
+                height: 12px;
+                border-radius: 16px;
+                position: absolute;
+                top: -2px;
+                right: -5px;
+                font-size: 0.6em;
+                text-align: center;
+                color: $White;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        &__avatar {
+            width: 24px;
+            @include responsive(desktop) {
+                width: 48px;
+            }
+            &:hover {
+                cursor: pointer;
+                border: 2px solid $Orange;
+                border-radius: 50%;
+            }
+        }
+
+        .navbar {
+            display: none;
+            width: 400px;
+            &__items {
+                display: flex;
+                justify-content: space-between;
+                
+            }
+            &__link {
+                text-decoration: none;
+                color: $Dark-grayish-blue;
+                display: block;
+                height: 112px;
+                padding-top: 42px;
+                &:hover {
+                    border-bottom: 4px solid $Orange;
+                }
+            }
+            @include responsive(desktop) {
+                display: block;
+                
+            }
+        }
+        .modal-navbar{
+            background-color: $White;
+            width: 250px;
+            height: 100%;
+            padding: 5%;
+            display: none;
+            &__background {
+                @include modal-background()
+            }
+            &__items {
+                border: 1px solid red;
+                display: flex;
+                flex-direction: column;
+                height: 200px;
+                justify-content: space-between;
+                margin-top: 20%;
+            }
+            &__link {
+                text-decoration: none;
+                color: $Very-vark-blue;
+                font-weight: 700;
+                font-size: 1.1em;
+            }
+            &__close-icon:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .gallery {
+        &__image-container {
+            border: 1px solid blue;
+            height: 300px;
+            width: 100%;
+            background-image: url(../images/image-product-1.jpg);
+            background-size: cover;
+            background-position-y: -35px;
+        }
+        &__previous {
+            @include image-btn(180px, 15px);
+            }
+        &__next {
+            @include image-btn(180px, 320px);
+        }
+        &__thumbnail {
+            display: none;
+            @include responsive(desktop) {
+                display: block;
+            }
+        }
+    }
+}
+
+.attribution { 
+    font-size: 14px; 
+    text-align: center; 
+    a { 
+        color: hsl(228, 45%, 44%); 
+    }
+}
