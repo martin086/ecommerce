@@ -61,12 +61,16 @@ ul {
     &:hover {
         cursor: pointer;
     }
+    @include responsive(desktop) {
+        display: none;
+    }
 }
 
 @mixin changeNumber($pv, $ph) {
     width: 25px;
     height: 100%;
     padding: $pv $ph;
+    background-color: $Light-grayish-blue;
     &:hover {
         cursor: pointer;
     }
@@ -86,7 +90,10 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    &:hover { 
+        cursor: pointer;
+        opacity: 0.5;
+    }
 }
 /*Fin Mixins*/
 
@@ -222,13 +229,22 @@ ul {
     }
 
     .gallery {
+        @include responsive(desktop){
+            width: 446px;
+        }
         &__image-container {
-            border: 1px solid blue;
             height: 300px;
             width: 100%;
             background-image: url(../images/image-product-1.jpg);
             background-size: cover;
             background-position-y: -35px;
+            @include responsive(desktop){
+                border-radius: 16px;
+                width: 446px;
+                height: 446px;
+                margin-bottom: 32px;
+                background-position-y: 0;
+            }
         }
         &__previous {
             @include image-btn(180px, 15px);
@@ -236,16 +252,29 @@ ul {
         &__next {
             @include image-btn(180px, 320px);
         }
-        &__thumbnail {
+        &__thumbnails {
             display: none;
             @include responsive(desktop) {
-                display: block;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        &__thumbnail {
+            width: 90px;
+            border-radius: 16px;
+            &:hover {
+                cursor: pointer;
+                border: 2px solid $Orange;
             }
         }
     }
 
     .details {
         padding: 24px;
+        @include responsive(desktop){
+            padding-top: 60px;
+            width: 446px;
+        }
         &__company {
             color: $Orange;
             text-transform: uppercase;
@@ -256,19 +285,30 @@ ul {
         &__title {
             font-size: 1.7em;
             margin-bottom: 16px;
+            @include responsive(desktop){
+                font-size: 2.7em;
+                margin-bottom: 48px;
+            }
         }
         &__description {
             font-size: 0.94em;
             color: $Dark-grayish-blue;
             line-height: 24px;
             margin-bottom: 24px;
+            @include responsive(desktop){
+                font-size: 0.9em;
+                margin-bottom: 37px;
+            }
         }
         &__prices {
             display: flex;
             justify-content: space-between;
             margin-bottom: 24px;
             align-items: center;
-
+            @include responsive(desktop){
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
         &__now {
             font-size: 1.8em;
@@ -292,6 +332,14 @@ ul {
         &__button {
             @include button();
         }
+        &__product-quantity {
+            @include responsive(desktop){
+            display: flex;
+            gap: 32px;
+            } 
+            
+        }
+        
 
         .input {
             height: 57px;
@@ -299,7 +347,8 @@ ul {
             justify-content: space-around;
             align-items: center;
             &__minus {
-                @include changeNumber(24px, 5px);                
+                @include changeNumber(24px, 5px);
+                border-radius: 8px 0 0 8px;                
             }
             &__number {
                 width: 100%;
@@ -314,9 +363,61 @@ ul {
             }
             &__plus {
                 @include changeNumber(19px, 3px);
+                border-radius: 0 8px 8px 0;
             }
             
         }
+    }
+
+    .cart-modal {
+        display: none;
+        width: 360px;
+        height: 260px;
+        border-radius: 8px;
+        box-shadow: 3px 3px 10px;
+        position: absolute;
+        top: 75px;
+        background-color: $White;
+        right: 7px;
+        &__title {
+            font-weight: 700;
+            padding: 24px;
+            border-bottom: 1px solid $Grayish-blue;
+        }
+        &__checkout-container {
+            padding: 24px;
+        }
+        &__details-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            color: $Dark-grayish-blue;
+        }
+        &__image {
+            width: 50px;
+            border-radius: 4px;
+        }
+        &__price span {
+            color: $Black;
+            font-weight: 700;
+        }
+        &__delete:hover {
+            cursor: pointer;
+        }
+        &__checkout {
+            @include button;
+        }
+    }
+
+    .content {
+        @include responsive(desktop) {
+            display: flex;
+            padding: 90px 50px;
+            gap: 124px;
+            justify-content: space-evenly;
+        }
+        
     }
 }
 
