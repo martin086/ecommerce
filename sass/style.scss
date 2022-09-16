@@ -45,6 +45,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
     display: none;
 }
 
@@ -62,6 +63,33 @@ ul {
     }
 }
 
+@mixin changeNumber($pv, $ph) {
+    width: 25px;
+    height: 100%;
+    padding: $pv $ph;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin button {
+    background-color: $Orange;
+    width: 100%;
+    height: 57px;
+    border-radius: 8px;
+    border: none;
+    color: $White;
+    font-size: 0.9em;
+    font-weight: 700;
+    font-family: $font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+/*Fin Mixins*/
+
 
 .main-container {
     width: 375px;
@@ -72,7 +100,6 @@ ul {
         width: 1440px;
     }
     .header {
-        //border: 1px solid red;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -164,16 +191,18 @@ ul {
             }
         }
         .modal-navbar{
+            &__background {
+                @include modal-background();
+                @include responsive(desktop) {
+                    display: none;
+                }
+            }
             background-color: $White;
             width: 250px;
-            height: 100%;
-            padding: 5%;
-            display: none;
-            &__background {
-                @include modal-background()
-            }
+            height: 100vh;
+            padding: 28px 24px;
+            display: block;
             &__items {
-                border: 1px solid red;
                 display: flex;
                 flex-direction: column;
                 height: 200px;
@@ -212,6 +241,81 @@ ul {
             @include responsive(desktop) {
                 display: block;
             }
+        }
+    }
+
+    .details {
+        padding: 24px;
+        &__company {
+            color: $Orange;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        &__title {
+            font-size: 1.7em;
+            margin-bottom: 16px;
+        }
+        &__description {
+            font-size: 0.94em;
+            color: $Dark-grayish-blue;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+        &__prices {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            align-items: center;
+
+        }
+        &__now {
+            font-size: 1.8em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        &__discount {
+            font-size: 0.5em;
+            color: $Orange;
+            background-color: $Pale-orange;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        &__before {
+            color: $Grayish-blue;
+            font-weight: 700;
+            text-decoration: line-through;
+        }
+        &__button {
+            @include button();
+        }
+
+        .input {
+            height: 57px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            &__minus {
+                @include changeNumber(24px, 5px);                
+            }
+            &__number {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: $Light-grayish-blue;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: $font;
+                text-align: center;
+                outline: none;
+            }
+            &__plus {
+                @include changeNumber(19px, 3px);
+            }
+            
         }
     }
 }
