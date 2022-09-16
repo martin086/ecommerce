@@ -49,7 +49,7 @@ ul {
     display: none;
 }
 
-@mixin image-btn($top, $left) {
+@mixin image-btn($top, $left, $showDesktop) {
     background-color: $White;
     width: 40px;
     height: 40px;
@@ -62,7 +62,11 @@ ul {
         cursor: pointer;
     }
     @include responsive(desktop) {
-        display: none;
+        @if $showDesktop == true {
+            display: block;
+        }@else{
+            display: none;
+        }
     }
 }
 
@@ -100,7 +104,7 @@ ul {
 
 .main-container {
     width: 375px;
-    border: 1px solid black;
+    //border: 1px solid black;
     margin: auto;
     position: relative;
     @include responsive(desktop) {
@@ -247,10 +251,10 @@ ul {
             }
         }
         &__previous {
-            @include image-btn(180px, 15px);
+            @include image-btn(180px, 15px, false);
             }
         &__next {
-            @include image-btn(180px, 320px);
+            @include image-btn(180px, 320px, false);
         }
         &__thumbnails {
             display: none;
@@ -268,6 +272,59 @@ ul {
             }
         }
     }
+
+    .modal-gallery {
+        width: 550px;
+        &__background {
+            display: none;
+            @include modal-background;
+            //display: grid;
+            place-content: center;
+        }
+        &__close-container {
+            text-align: right;
+            height: 30px;
+        }
+        &__close{
+            width: 16px;
+            &:hover {
+                cursor: pointer;
+                content: url('../images/icon-close-orange.svg');
+            }
+            
+        }
+        &__image-container {
+            background-image: url('../images/image-product-1.jpg');
+            background-size: cover;
+            height: 446px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        &__thumbnails {
+            display: flex;
+            justify-content: space-between;
+            width: 450px;
+            margin: auto;
+        }
+        &__thumbnail {
+            width: 90px;
+            border-radius: 16px;
+            &:hover {
+                cursor: pointer;
+                border: 2px solid $Orange;
+            }
+        }
+        &__previous {
+            @include image-btn(200px, -15px, true);
+            }
+        &__next {
+            @include image-btn(200px, 525px, true);
+        }
+
+
+    }
+
 
     .details {
         padding: 24px;
@@ -333,9 +390,12 @@ ul {
             @include button();
         }
         &__product-quantity {
-            @include responsive(desktop){
             display: flex;
-            gap: 32px;
+            flex-direction: column;
+            gap: 10px;
+            @include responsive(desktop){
+            flex-direction: row;
+            gap: 25px;
             } 
             
         }
@@ -409,6 +469,7 @@ ul {
             @include button;
         }
     }
+
 
     .content {
         @include responsive(desktop) {
