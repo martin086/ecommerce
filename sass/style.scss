@@ -248,6 +248,9 @@ ul {
                 height: 446px;
                 margin-bottom: 32px;
                 background-position-y: 0;
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
         &__previous {

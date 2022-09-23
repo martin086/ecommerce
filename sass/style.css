@@ -144,7 +144,9 @@ ul {
         width: 446px;
         height: 446px;
         margin-bottom: 32px;
-        background-position-y: 0; } }
+        background-position-y: 0; }
+        .main-container .gallery__image-container:hover {
+          cursor: pointer; } }
   .main-container .gallery__previous {
     background-color: white;
     width: 40px;
