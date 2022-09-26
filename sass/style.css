@@ -112,7 +112,8 @@ ul {
         width: 100%;
         height: 100%;
         z-index: 1;
-        display: none; }
+        display: none;
+        overflow: hidden; }
         @media (min-width: 1440px) {
           .main-container .header .modal-navbar__background {
             display: none; } }
@@ -187,73 +188,6 @@ ul {
     .main-container .gallery__thumbnail:hover {
       cursor: pointer;
       border: 2px solid #ff7d1a; }
-  .main-container .modal-gallery {
-    width: 550px; }
-    .main-container .modal-gallery__background {
-      display: none;
-      background-color: rgba(0, 0, 0, 0.75);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: none;
-      place-content: center; }
-    .main-container .modal-gallery__close-container {
-      text-align: right;
-      height: 30px; }
-    .main-container .modal-gallery__close {
-      width: 16px; }
-      .main-container .modal-gallery__close:hover {
-        cursor: pointer;
-        content: url("../images/icon-close-orange.svg"); }
-    .main-container .modal-gallery__image-container {
-      background-image: url("../images/image-product-1.jpg");
-      background-size: cover;
-      height: 446px;
-      border-radius: 16px;
-      margin-bottom: 32px;
-      position: relative; }
-    .main-container .modal-gallery__thumbnails {
-      display: flex;
-      justify-content: space-between;
-      width: 450px;
-      margin: auto; }
-    .main-container .modal-gallery__thumbnail {
-      width: 90px;
-      border-radius: 16px; }
-      .main-container .modal-gallery__thumbnail:hover {
-        cursor: pointer;
-        border: 2px solid #ff7d1a; }
-    .main-container .modal-gallery__previous {
-      background-color: white;
-      width: 40px;
-      height: 40px;
-      padding: 12px;
-      border-radius: 50%;
-      position: absolute;
-      top: 200px;
-      left: -15px; }
-      .main-container .modal-gallery__previous:hover {
-        cursor: pointer; }
-      @media (min-width: 1440px) {
-        .main-container .modal-gallery__previous {
-          display: block; } }
-    .main-container .modal-gallery__next {
-      background-color: white;
-      width: 40px;
-      height: 40px;
-      padding: 12px;
-      border-radius: 50%;
-      position: absolute;
-      top: 200px;
-      left: 525px; }
-      .main-container .modal-gallery__next:hover {
-        cursor: pointer; }
-      @media (min-width: 1440px) {
-        .main-container .modal-gallery__next {
-          display: block; } }
   .main-container .details {
     padding: 24px; }
     @media (min-width: 1440px) {
@@ -424,6 +358,75 @@ ul {
     font-weight: 700;
     color: rgba(0, 0, 0, 0.75);
     opacity: 0.75; }
+
+.modal-gallery {
+  width: 550px; }
+  .modal-gallery__background {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+    overflow: hidden;
+    place-content: center; }
+  .modal-gallery__close-container {
+    text-align: right;
+    height: 30px; }
+  .modal-gallery__close {
+    width: 16px; }
+    .modal-gallery__close:hover {
+      cursor: pointer;
+      content: url("../images/icon-close-orange.svg"); }
+  .modal-gallery__image-container {
+    background-image: url("../images/image-product-1.jpg");
+    background-size: cover;
+    height: 446px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    position: relative; }
+  .modal-gallery__thumbnails {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    margin: auto; }
+  .modal-gallery__thumbnail {
+    width: 90px;
+    border-radius: 16px; }
+    .modal-gallery__thumbnail:hover {
+      cursor: pointer;
+      border: 2px solid #ff7d1a; }
+  .modal-gallery__previous {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 200px;
+    left: -15px; }
+    .modal-gallery__previous:hover {
+      cursor: pointer; }
+    @media (min-width: 1440px) {
+      .modal-gallery__previous {
+        display: block; } }
+  .modal-gallery__next {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 200px;
+    left: 525px; }
+    .modal-gallery__next:hover {
+      cursor: pointer; }
+    @media (min-width: 1440px) {
+      .modal-gallery__next {
+        display: block; } }
 
 .attribution {
   font-size: 14px;

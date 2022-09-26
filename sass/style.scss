@@ -47,6 +47,7 @@ ul {
     height: 100%;
     z-index: 1;
     display: none;
+    overflow: hidden;
 }
 
 @mixin image-btn($top, $left, $showDesktop) {
@@ -104,7 +105,6 @@ ul {
 
 .main-container {
     width: 375px;
-    //border: 1px solid black;
     margin: auto;
     position: relative;
     @include responsive(desktop) {
@@ -276,58 +276,6 @@ ul {
         }
     }
 
-    .modal-gallery {
-        width: 550px;
-        &__background {
-            display: none;
-            @include modal-background;
-            //display: grid;
-            place-content: center;
-        }
-        &__close-container {
-            text-align: right;
-            height: 30px;
-        }
-        &__close{
-            width: 16px;
-            &:hover {
-                cursor: pointer;
-                content: url('../images/icon-close-orange.svg');
-            }
-            
-        }
-        &__image-container {
-            background-image: url('../images/image-product-1.jpg');
-            background-size: cover;
-            height: 446px;
-            border-radius: 16px;
-            margin-bottom: 32px;
-            position: relative;
-        }
-        &__thumbnails {
-            display: flex;
-            justify-content: space-between;
-            width: 450px;
-            margin: auto;
-        }
-        &__thumbnail {
-            width: 90px;
-            border-radius: 16px;
-            &:hover {
-                cursor: pointer;
-                border: 2px solid $Orange;
-            }
-        }
-        &__previous {
-            @include image-btn(200px, -15px, true);
-            }
-        &__next {
-            @include image-btn(200px, 525px, true);
-        }
-
-
-    }
-
 
     .details {
         padding: 24px;
@@ -495,9 +443,56 @@ ul {
         color: $Black-modal;
         opacity: 0.75;
     }
-
 }
 
+.modal-gallery {
+    width: 550px;
+    &__background {
+        display: none;
+        @include modal-background;
+        //display: grid;
+        place-content: center;
+    }
+    &__close-container {
+        text-align: right;
+        height: 30px;
+    }
+    &__close{
+        width: 16px;
+        &:hover {
+            cursor: pointer;
+            content: url('../images/icon-close-orange.svg');
+        }
+    }
+    &__image-container {
+        background-image: url('../images/image-product-1.jpg');
+        background-size: cover;
+        height: 446px;
+        border-radius: 16px;
+        margin-bottom: 32px;
+        position: relative;
+    }
+    &__thumbnails {
+        display: flex;
+        justify-content: space-between;
+        width: 450px;
+        margin: auto;
+    }
+    &__thumbnail {
+        width: 90px;
+        border-radius: 16px;
+        &:hover {
+            cursor: pointer;
+            border: 2px solid $Orange;
+        }
+    }
+    &__previous {
+        @include image-btn(200px, -15px, true);
+        }
+    &__next {
+        @include image-btn(200px, 525px, true);
+    }
+}
 
 
 .attribution { 

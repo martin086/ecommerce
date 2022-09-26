@@ -52,7 +52,7 @@ const productContainer = document.querySelector('.cart-modal__checkout-container
 cartIconBtn.addEventListener('click', ()=>{
     cartModal.classList.toggle('show');
 
-    if (lastQuantity == 0){
+    if (lastQuantity === 0){
         productContainer.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
     } else {
         drawProductInModal();
@@ -85,8 +85,62 @@ previousGalleryBtn.addEventListener('click', ()=>{
 })
 
 // Mostrar el modal de imagenes cuando hago click en la imagen principal.
+const imageModal = document.querySelector('.modal-gallery__background');
+const closeModalBtn = document.querySelector('.modal-gallery__close');
 
+imageContainer.addEventListener('click', ()=>{
+    imageModal.style.display = 'grid';
+});
 
+closeModalBtn.addEventListener('click', ()=>{
+    imageModal.style.display = 'none';
+});
+
+// Cambiar las imagenes principales desde los thumbnails.
+let thumbnails = document.querySelectorAll('.gallery__thumbnail');
+thumbnails = [...thumbnails];
+
+thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', event=>{
+        imageContainer.style.backgroundImage = `url('./images/image-product-${event.target.id}.jpg')`;
+    });
+});
+
+// Cambiar las imagenes principales desde los thumbnails en el Modal.
+let modalthumbnails = document.querySelectorAll('.modal-gallery__thumbnail');
+const modalImageContainer = document.querySelector('.modal-gallery__image-container');
+modalthumbnails = [...modalthumbnails];
+
+modalthumbnails.forEach(modalthumbnail => {
+    modalthumbnail.addEventListener('click', event=>{
+        modalImageContainer.style.backgroundImage = `url('./images/image-product-${event.target.id.slice(1)}.jpg')`;
+    });
+});
+
+// Cambiar imagen principal del Modal desde las flechas.
+const previousModalBtn = document.querySelector('.modal-gallery__previous');
+const nextModalBtn = document.querySelector('.modal-gallery__next');
+
+nextModalBtn.addEventListener('click', ()=>{
+    changeNextImage(modalImageContainer);
+})
+
+previousModalBtn.addEventListener('click', ()=>{
+    changePreviousImage(modalImageContainer);
+})
+
+// Mostrar el navbar cuando presiono menu hamburguesa.
+const headerMenu = document.querySelector('.header__menu');
+const modalNavbar = document.querySelector('.modal-navbar__background');
+const modalNavbarClose = document.querySelector('.modal-navbar__close-icon');
+
+headerMenu.addEventListener('click', ()=>{
+    modalNavbar.style.display = 'block';
+});
+
+modalNavbarClose.addEventListener('click', ()=>{
+    modalNavbar.style.display = 'none';
+});
 
 
 // FUNCIONES
@@ -107,7 +161,7 @@ function drawProductInModal(){
 }
 
 function changeNextImage(imgContainer){
-    if(imgIndex == 4){
+    if(imgIndex === 4){
         imgIndex = 1;
     } else {
         imgIndex++;
@@ -116,7 +170,7 @@ function changeNextImage(imgContainer){
 }
 
 function changePreviousImage(imgContainer){
-    if(imgIndex == 1){
+    if(imgIndex === 1){
         imgIndex = 4;
     } else {
         imgIndex--;
