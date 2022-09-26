@@ -110,6 +110,9 @@ ul {
     @include responsive(desktop) {
         width: 1440px;
     }
+    .h1 {
+        display: none;
+    }
     .header {
         display: flex;
         align-items: center;

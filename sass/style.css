@@ -24,6 +24,8 @@ ul {
   @media (min-width: 1440px) {
     .main-container {
       width: 1440px; } }
+  .main-container .h1 {
+    display: none; }
   .main-container .header {
     display: flex;
     align-items: center;

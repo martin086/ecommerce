@@ -33,7 +33,6 @@ let currentDiscount = parseFloat("0." + (parseInt(discount.innerText)));
 
 let actualPrice = currentPrice * currentDiscount;
 
-
 addToCartBtn.addEventListener('click', ()=>{
     lastQuantity = lastQuantity + userInputNumber;
 
@@ -46,7 +45,6 @@ addToCartBtn.addEventListener('click', ()=>{
 // Mostrar el modal con el detalle del carrito.
 const cartIconBtn = document.querySelector('.header__cart');
 const cartModal = document.querySelector('.cart-modal');
-//let priceModal = document.querySelector('.cart-modal__price');
 const productContainer = document.querySelector('.cart-modal__checkout-container');
 
 cartIconBtn.addEventListener('click', ()=>{
